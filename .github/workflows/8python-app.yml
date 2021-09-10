@@ -23,9 +23,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        apt update && apt install docker.io
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Install Docker
+      run: |
+        apt update && apt install docker.io
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
